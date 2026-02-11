@@ -581,10 +581,32 @@
       align-items:center;
     }
 	@media (max-width: 900px){
+
+	/* Keep two panels side-by-side */
 	.app{
-    grid-template-columns: 1fr !important;
-    height: auto !important;
+    grid-template-columns: 3fr 2fr;  /* left bigger, right smaller */
+    gap: 12px;
+    overflow-x: auto;
+    height: auto;
 	}
+
+	/* Prevent panels from shrinking too much */
+	.card{
+	min-width: 320px;
+	}
+
+	/* Allow horizontal scroll if screen is too narrow */
+	.app::-webkit-scrollbar{
+    height: 6px;
+	}
+
+	/* Ensure content scrolls vertically */
+	.side{
+    max-height: none;
+    overflow-y: auto;
+	}
+	}
+
 
 	.explorer{
     grid-template-columns: 1fr !important;
