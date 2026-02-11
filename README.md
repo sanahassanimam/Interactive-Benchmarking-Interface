@@ -56,13 +56,58 @@ It bridges the gap between **abstract annotation schemas** and **concrete prepro
 ## 🔹 Key Functionalities
 
 ### Schema Graph (Tab 1)
-Interactive force-directed graph of the full benchmarking schema, allowing exploration of families, groups, steps, and sublabels with zoom, search, and hierarchical inspection.
+
+- Interactive force-directed graph representation of the full benchmarking schema  
+- Nodes represent families, groups, steps, and sublabels  
+- Click to inspect definitions, relationships, and hierarchy  
+- Supports expand/collapse, zooming, and search  
+<p align="center">
+  <img src="Images/tab1.jpeg" width="800">
+</p>
 
 ### Annotations Explorer (Tab 2)
-Visualization and inspection of Label Studio–compatible JSON annotations, enabling rapid qualitative validation of extracted metadata.
+
+- Load Label Studio–compatible JSON files  
+- Visualize extracted text with highlighted annotation spans  
+- Inspect label distributions and annotation metadata  
+<p align="center">
+  <img src="Images/tab2.jpeg" width="800">
+</p>
+
 
 ### Generate Report (Tab 3)
-Guided report builder for manual documentation of preprocessing and graph-analysis pipelines, producing structured text summaries aligned with the schema.
+
+- Manual, guided report builder aligned with the benchmarking schema  
+- Allows users to:
+  - Select schema families  
+  - Tick present preprocessing steps  
+  - Enter step numbers, software, algorithms/types, and parameters  
+- Produces a structured, text-based report summarizing preprocessing and analysis decisions  
+<p align="center">
+  <img src="Images/tab3.jpeg" width="800">
+</p>
+
+
+## 🎯 Purpose in the Benchmarking Pipeline
+
+The `schema_viewer` serves multiple roles:
+
+- **Schema documentation**: makes the full analytical decision space explicit and navigable  
+- **Annotation validation**: enables rapid inspection of extracted metadata  
+- **Human-in-the-loop review**: supports correction and confirmation of LLM outputs  
+- **Reporting aid**: standardizes how preprocessing pipelines are summarized  
+
+This tool is especially useful for:
+
+- Onboarding new collaborators  
+- Reviewing edge cases and mismatches  
+- Demonstrating the scope and complexity of the benchmarking schema  
+
+## ▶️ Usage
+
+- Open `schema_viewer.html` in any modern web browser (Chrome/Edge recommended)  
+- No server or backend required — runs fully client-side  
+- Optional: load JSON annotation files in the **Annotations Explorer** tab  
 
 ---
 
