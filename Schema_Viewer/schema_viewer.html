@@ -634,6 +634,62 @@
     max-height: none !important;
 	}
 	}
+	/* ============================
+   MOBILE FIXES: Tab 2 + Tab 3
+   (Tab 1 stays 2-column)
+	============================ */
+	@media (max-width: 900px){
+
+	/* ---------- TAB 2: Explorer ---------- */
+	#explorerPage .explorer{
+    grid-template-columns: 1fr !important; /* stack on mobile */
+    height: auto !important;
+	}
+
+	/* Make file list + document scroll normally */
+	#explorerPage .panel,
+	#explorerPage .doc{
+    min-height: auto !important;
+	}
+
+	#explorerPage .panel-body,
+	#explorerPage .doc-body{
+    max-height: none !important;
+    overflow: auto !important;
+    -webkit-overflow-scrolling: touch;
+	}
+
+	/* This is often too small on mobile */
+	#explorerPage #annoMeta{
+    max-height: none !important;
+	}
+
+	/* ---------- TAB 3: Report ---------- */
+	#reportPage .report{
+    grid-template-columns: 1fr !important; /* stack on mobile */
+    height: auto !important;
+    padding: 12px 12px !important;
+	}
+
+	/* Make the left family list not feel “cramped” */
+	#reportPage .navBody{
+    max-height: 40dvh !important;  /* scrollable list */
+    overflow: auto !important;
+    -webkit-overflow-scrolling: touch;
+	}
+
+	/* Ensure the main content scrolls fully */
+	#reportPage .contentBody{
+    max-height: none !important;
+    overflow: auto !important;
+    -webkit-overflow-scrolling: touch;
+	}
+
+	/* Fix 4-field grid being too wide on phones */
+	#reportPage .grid4{
+    grid-template-columns: 1fr 1fr !important;
+	}
+	}
 
   </style>
 </head>
