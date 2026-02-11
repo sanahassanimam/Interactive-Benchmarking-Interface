@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Benchmarking — Graph + Explorer + Generate Report</title>
 
   <script src="https://unpkg.com/d3@7/dist/d3.min.js"></script>
@@ -27,11 +27,18 @@
     }
 
     *{box-sizing:border-box}
+	html, body{
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	overflow: auto;
+	-webkit-overflow-scrolling: touch;
+	}
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
       color:var(--text);
-      overflow:hidden;
+      overflow:auto;
 
       /* ✅ CHANGED */
       background:var(--bg);
@@ -119,7 +126,7 @@
     }
 
     /* ---------- Pages ---------- */
-    .page{height:calc(100vh - 56px); display:none;}
+    .page{min-height: calc(100dvh - 56px); height: auto; display: none;}
     .page.active{display:block;}
 
     /* ---------- Shared cards ---------- */
@@ -573,6 +580,39 @@
       flex-wrap:wrap;
       align-items:center;
     }
+	@media (max-width: 900px){
+	.app{
+    grid-template-columns: 1fr !important;
+    height: auto !important;
+	}
+
+	.explorer{
+    grid-template-columns: 1fr !important;
+    height: auto !important;
+	}
+
+	.report{
+    grid-template-columns: 1fr !important;
+    height: auto !important;
+    padding: 12px !important;
+	}
+
+	.topbar{
+    position: sticky;
+    top: 0;
+	}
+
+	/* avoid elements forcing width overflow */
+	.card, .panel, .doc, .nav, .content{
+    min-width: 0 !important;
+	}
+
+	/* let the page scroll naturally on mobile */
+	.side, .panel-body, .doc-body, .contentBody, .navBody{
+    max-height: none !important;
+	}
+	}
+
   </style>
 </head>
 
@@ -989,6 +1029,14 @@ function resize(){
   }
 }
 window.addEventListener("resize", resize);
+window.addEventListener("orientationchange", () => {
+  setTimeout(() => {
+    resize();                 // recompute svg size
+    resetZoom();              // optional, but helps on small screens
+    fitToView();              // re-fit graph
+    window.scrollTo(0, 0);    // prevents “stuck mid-scroll”
+  }, 250);
+});
 
 function collapse(h){
   if (h.children) { h._children = h.children; h._children.forEach(collapse); h.children = null; }
