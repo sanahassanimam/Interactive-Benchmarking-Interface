@@ -712,6 +712,21 @@
     grid-template-columns: 1fr 1fr !important;
 	}
 	}
+    /* FORCE Tab 3 to stay 2-column on mobile */
+	@media (max-width: 900px){
+	#reportPage .report{
+    display:grid !important;
+    grid-template-columns: 320px minmax(520px, 1fr) !important;
+    gap:12px !important;
+    overflow-x:auto !important;
+    height:auto !important;
+	}
+
+	#reportPage .nav,
+	#reportPage .content{
+    min-width:320px !important;
+	}
+	}
 
   </style>
 </head>
