@@ -608,17 +608,6 @@
 	}
 
 
-	.explorer{
-    grid-template-columns: 1fr !important;
-    height: auto !important;
-	}
-
-	.report{
-    grid-template-columns: 1fr !important;
-    height: auto !important;
-    padding: 12px !important;
-	}
-
 	.topbar{
     position: sticky;
     top: 0;
@@ -638,18 +627,51 @@
    MOBILE FIXES: Tab 2 + Tab 3
    (Tab 1 stays 2-column)
 	============================ */
+	/* ============================
+   MOBILE: keep Tab 2 + Tab 3 in 2 columns
+============================ */
 	@media (max-width: 900px){
 
-	/* ---------- TAB 2: Explorer ---------- */
+	/* TAB 2 */
 	#explorerPage .explorer{
-    grid-template-columns: 1fr !important; /* stack on mobile */
-    height: auto !important;
+    grid-template-columns: 320px minmax(520px, 1fr); /* left fixed, right flexible */
+    gap:12px;
+    overflow-x:auto;  /* allow sideways scroll instead of stacking */
+    height:auto;
 	}
 
-	/* Make file list + document scroll normally */
+	/* TAB 3 */
+	#reportPage .report{
+    grid-template-columns: 320px minmax(520px, 1fr);
+    gap:12px;
+    overflow-x:auto;
+    height:auto;
+    padding:12px;
+	}
+
+	/* important: do NOT allow items to shrink to zero */
 	#explorerPage .panel,
-	#explorerPage .doc{
-    min-height: auto !important;
+	#explorerPage .doc,
+	#reportPage .nav,
+	#reportPage .content{
+    min-width:320px;
+	}
+
+	/* make internal panes scroll normally */
+	#explorerPage .panel-body,
+	#explorerPage .doc-body,
+	#explorerPage #annoMeta,
+	#reportPage .navBody,
+	#reportPage .contentBody{
+    max-height:none;
+    overflow:auto;
+    -webkit-overflow-scrolling:touch;
+	}
+
+	/* make your 4-field grid usable on phones */
+	#reportPage .grid4{
+    grid-template-columns: 1fr 1fr;
+	}
 	}
 
 	#explorerPage .panel-body,
