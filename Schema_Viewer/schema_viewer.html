@@ -687,12 +687,7 @@
 	}
 
 	/* ---------- TAB 3: Report ---------- */
-	#reportPage .report{
-    grid-template-columns: 1fr !important; /* stack on mobile */
-    height: auto !important;
-    padding: 12px 12px !important;
-	}
-
+	
 	/* Make the left family list not feel “cramped” */
 	#reportPage .navBody{
     max-height: 40dvh !important;  /* scrollable list */
@@ -727,6 +722,50 @@
     min-width:320px !important;
 	}
 	}
+	@media (max-width: 900px){
+
+	/* TAB 2 */
+	#explorerPage .explorer{
+    grid-template-columns: 320px minmax(520px, 1fr);
+    gap:12px;
+    overflow-x:auto;
+    height:auto;
+	}
+
+	/* TAB 3 */
+	#reportPage .report{
+    display:grid !important;
+    grid-template-columns: 320px minmax(520px, 1fr) !important;
+    gap:12px !important;
+    overflow-x:auto !important;
+    height:auto !important;
+    padding:12px !important;
+	}
+
+	/* prevent shrinking */
+	#explorerPage .panel,
+	#explorerPage .doc,
+	#reportPage .nav,
+	#reportPage .content{
+    min-width:320px !important;}
+
+   /* inner scrolling */
+   #explorerPage .panel-body,
+   #explorerPage .doc-body,
+   #explorerPage #annoMeta,
+   #reportPage .navBody,
+   #reportPage .contentBody{
+    max-height:none !important;
+    overflow:auto !important;
+    -webkit-overflow-scrolling:touch;
+   }
+
+  /* optional for small screens */
+  #reportPage .grid4{
+    grid-template-columns: 1fr 1fr !important;
+   }
+}
+
 
   </style>
 </head>
